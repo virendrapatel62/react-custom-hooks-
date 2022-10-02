@@ -1,21 +1,15 @@
 export function useNothing() {}
 
 export const useLogger = (type = "info", location = "") => {
-  if (type == "info")
-    return () =>
-      console.log(
-        `${new Date().toLocaleTimeString()} : ${message} : ${location}`
-      );
+  const actionMap = {
+    info: console.log,
+    error: console.error,
+    warning: console.warn,
+  };
 
-  if (type == "warning")
-    return () =>
-      console.warn(
-        `${new Date().toLocaleTimeString()} : ${message} : ${location}`
-      );
-
-  if (type == "error")
-    return () =>
-      console.error(
-        `${new Date().toLocaleTimeString()} : ${message} : ${location}`
-      );
+  return (message) => {
+    actionMap[type](
+      `${new Date().toLocaleTimeString()} : ${message} : ${location}`
+    );
+  };
 };
