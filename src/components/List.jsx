@@ -1,10 +1,10 @@
 import { useLogger } from "../hooks";
 
 export function List() {
-  const log = useLogger("info", List.name);
+  const logger = useLogger("warning", List.name);
 
   const listItemClickHandler = () => {
-    log("List Item Clicked...");
+    logger.log("List Item Clicked...");
   };
   return (
     <ul>
@@ -12,6 +12,10 @@ export function List() {
       <li onClick={listItemClickHandler}>Item 2</li>
       <li onClick={listItemClickHandler}>Item 3</li>
       <li onClick={listItemClickHandler}>Item 4</li>
+
+      {logger.logs.map((log) => (
+        <small>{JSON.stringify(log)}</small>
+      ))}
     </ul>
   );
 }
