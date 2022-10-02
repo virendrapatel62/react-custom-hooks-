@@ -1,14 +1,17 @@
-import { useNothing } from "../hooks";
+import { useLogger } from "../hooks";
 
 export function List() {
-  const nothing = useNothing();
-  console.log({ nothing });
+  const log = useLogger("info", List.name);
+
+  const listItemClickHandler = () => {
+    log("List Item Clicked...");
+  };
   return (
     <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-      <li>Item 4</li>
+      <li onClick={listItemClickHandler}>Item 1</li>
+      <li onClick={listItemClickHandler}>Item 2</li>
+      <li onClick={listItemClickHandler}>Item 3</li>
+      <li onClick={listItemClickHandler}>Item 4</li>
     </ul>
   );
 }

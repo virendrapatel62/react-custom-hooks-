@@ -1,7 +1,10 @@
-import { useNothing } from "../hooks";
+import { useLogger, useNothing } from "../hooks";
 
 export function Button({ label }) {
-  const nothing = useNothing();
-  console.log({ nothing });
-  return <button>{label}</button>;
+  const logger = useLogger("info", Button.name);
+
+  const handler = () => {
+    logger("Button Component Button Clicked...");
+  };
+  return <button onClick={handler}>{label}</button>;
 }
