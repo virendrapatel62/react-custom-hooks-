@@ -1,21 +1,35 @@
+import React from "react";
 import { useLogger } from "../hooks";
+import { data } from "./products";
+const Actions = React.memo(({ log }) => {
+  console.log("Re-rendering Actions");
+  return (
+    <div style={{ display: "inline" }}>
+      <button onClick={() => log("Edit Button")}>✏️</button>
+      <button onClick={() => log("Delete Button")}>🗑️</button>
+    </div>
+  );
+});
 
 export function List() {
-  const logger = useLogger("warning", List.name);
-
+  console.log("Rerending LIST ");
+  const { log } = useLogger("info", List.name);
   const listItemClickHandler = () => {
-    logger.log("List Item Clicked...");
+    log("List Item Clicked...");
   };
+
+  const products = data.products;
+
   return (
     <ul>
-      <li onClick={listItemClickHandler}>Item 1</li>
-      <li onClick={listItemClickHandler}>Item 2</li>
-      <li onClick={listItemClickHandler}>Item 3</li>
-      <li onClick={listItemClickHandler}>Item 4</li>
-
-      {logger.logs.map((log) => (
-        <small>{JSON.stringify(log)}</small>
-      ))}
+      {products.map((product) => {
+        return (
+          <li key={product.id}>
+            <span onClick={listItemClickHandler}>{product.title}</span>{" "}
+            <Actions log={log} />
+          </li>
+        );
+      })}
     </ul>
   );
 }

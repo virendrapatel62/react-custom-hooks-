@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export function useNothing() {}
 
 export const useLogger = (type = "info", location = "") => {
+  console.log("Creatting Logger ");
   const [logs, setLogs] = useState([]);
 
   const actionMap = {
@@ -11,18 +12,21 @@ export const useLogger = (type = "info", location = "") => {
     warning: console.warn,
   };
 
-  const log = (message) => {
-    const timeStamp = new Date().toLocaleTimeString();
-    const finalMessage = `${timeStamp} : ${message} : ${location}`;
-    const log = {
-      timeStamp,
-      message,
-      location,
-      type,
-    };
-    setLogs([...logs, log]);
-    actionMap[type](finalMessage);
-  };
+  const log = useCallback(
+    (message) => {
+      const timeStamp = new Date().toLocaleTimeString();
+      const finalMessage = `${timeStamp} : ${message} : ${location}`;
+      const log = {
+        timeStamp,
+        message,
+        location,
+        type,
+      };
+      setLogs([...logs, log]);
+      actionMap[type](finalMessage);
+    },
+    [setLogs]
+  );
 
   return {
     log,

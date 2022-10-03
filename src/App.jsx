@@ -33,18 +33,6 @@ function App() {
       <button onClick={warningHandler}>App Click Warning</button>
       <button onClick={errorHandler}>App Click Error</button>
 
-      <div>
-        {infoLogs.map((log) => (
-          <small>{JSON.stringify(log)}</small>
-        ))}
-        {errorLogs.map((log) => (
-          <small style={{ color: "red" }}>{JSON.stringify(log)}</small>
-        ))}
-        {warningLogs.map((log) => (
-          <small style={{ color: "#b59212" }}>{JSON.stringify(log)}</small>
-        ))}
-      </div>
-
       <hr />
       <Button label={"Click Here"} />
       <List />
