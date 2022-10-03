@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ul{
+  padding: 0 30px;
+}
+
+li{
+  display: flex;
+  justify-content: space-between;
+}
+
+li span{
+  overflow: hidden;
+  font-size: .8em;
+}
+
+li>span::before{
+  content: '📌 ';
+}
+
+button{
+  padding: 5px;
+  margin: 2px;
+  cursor: pointer;
+  background-color: rgb(248, 228, 172);
+  border: 1px rgb(181, 151, 67) solid;
+  border-radius: 5px;
+  color: black;
+}
+button:hover{
+  background-color: rgb(235, 203, 113);
+
+}
