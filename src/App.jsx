@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./components/Button";
 import { List } from "./components/List";
+import { LogDisplay } from "./components/LogDisplay";
 import { useLogger } from "./hooks";
 
 function App() {
@@ -32,6 +33,12 @@ function App() {
       <button onClick={infoHandeler}>App Click Info</button>
       <button onClick={warningHandler}>App Click Warning</button>
       <button onClick={errorHandler}>App Click Error</button>
+
+      <hr />
+
+      {/* <LogDisplay logs={infoLogs} />
+      <LogDisplay logs={warningLogs} />
+      <LogDisplay logs={errorLogs} /> */}
 
       <hr />
       <Button label={"Click Here"} />

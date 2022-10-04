@@ -3,7 +3,6 @@ import { useCallback, useState } from "react";
 export function useNothing() {}
 
 export const useLogger = (type = "info", location = "") => {
-  console.log("Creatting Logger ");
   const [logs, setLogs] = useState([]);
 
   const actionMap = {
@@ -22,7 +21,7 @@ export const useLogger = (type = "info", location = "") => {
         location,
         type,
       };
-      setLogs([...logs, log]);
+      setLogs((logs) => [...logs, log]);
       actionMap[type](finalMessage);
     },
     [setLogs]
