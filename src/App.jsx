@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./components/Button";
 import { List } from "./components/List";
-import { LogDisplay } from "./components/LogDisplay";
 import { useLogger } from "./hooks";
 
 function App() {
